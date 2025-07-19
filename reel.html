@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BINO.inc | Cinematic Reel</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background-color: #000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    /* خلفية سينمائية */
+    body::before {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,23,68,0.05), transparent 70%), 
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+      background-size: cover;
+      background-position: center;
+      z-index: 0;
+      opacity: 0.08;
+      animation: slowMove 30s linear infinite;
+    }
+
+    @keyframes slowMove {
+      from { transform: scale(1) rotate(0deg); }
+      to { transform: scale(1.1) rotate(360deg); }
+    }
+
+    .container {
+      text-align: center;
+      z-index: 1;
+    }
+
+    .logo {
+      width: 180px;
+      opacity: 0;
+      animation: popIn 1.2s ease-out forwards;
+      animation-delay: 0.7s;
+      filter: drop-shadow(0 0 15px #ff1744);
+      margin: 0 auto 30px;
+    }
+
+    .glow-circle {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,23,68,0.15), transparent 70%);
+      z-index: 0;
+      animation: pulseGlow 3s infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    .line {
+      font-size: 32px;
+      font-weight: bold;
+      margin: 20px 0;
+      opacity: 0;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #ff1744, #ff4081);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 8px #ff1744);
+    }
+
+    .line1 { animation: slideFade 1.5s ease forwards 2s; }
+    .line2 { animation: glitchIn 1.8s ease forwards 3.8s; }
+    .line3 { animation: scaleIn 1.5s ease-out forwards 5.5s; }
+
+    .final {
+      font-size: 42px;
+      font-weight: bold;
+      color: #fff;
+      opacity: 0;
+      margin-top: 50px;
+      position: relative;
+      text-shadow: 0 0 12px #ff1744, 0 0 20px #ff1744;
+      animation: cinematicReveal 2.5s ease-in-out forwards 7.5s;
+    }
+
+    .final::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: -120%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      animation: lightSweep 2s ease forwards 9s;
+      transform: skewX(-20deg);
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.4); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideFade {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glitchIn {
+      0% { opacity: 0; transform: translateX(-20px); }
+      25% { transform: translateX(4px); }
+      50% { transform: translateX(-4px); }
+      75% { transform: translateX(2px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes cinematicReveal {
+      0% { opacity: 0; transform: scale(0.8) blur(6px); }
+      60% { opacity: 1; transform: scale(1.08) blur(0); }
+      100% { opacity: 1; transform: scale(1) blur(0); }
+    }
+
+    @keyframes lightSweep {
+      to {
+        left: 110%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 🔊 Background Music -->
+  <audio autoplay loop>
+    <source src="synthwave-80-150204.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- ✨ Visual Glow + Content -->
+  <div class="glow-circle"></div>
+  <div class="container">
+    <img src="BINO.png" alt="BINO Logo" class="logo" />
+    <div class="line line1">Exclusive Tech Ideas 💡</div>
+    <div class="line line2">Smart Business Solutions 📊</div>
+    <div class="line line3">Built for the Future 🚀</div>
+    <div class="final">BINO.inc – Business & Technology</div>
+  </div>
+</body>
+</html>
